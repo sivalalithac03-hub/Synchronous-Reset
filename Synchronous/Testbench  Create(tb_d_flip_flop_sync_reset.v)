@@ -1,0 +1,108 @@
+`timescale 1ns/1ps
+
+module tb_d_flip_flop_sync_reset;
+
+    reg clk;
+    reg reset;
+    reg d;
+
+    wire q;
+    wire q_bar;
+
+    // Instantiate the D Flip-Flop
+    d_flip_flop_sync_reset uut (
+        .clk(clk),
+        .reset(reset),
+        .d(d),
+        .q(q),
+        .q_bar(q_bar)
+    );
+
+    // Clock generation
+    initial begin
+        clk = 1'b0;
+        forever #5 clk = ~clk;
+    end
+
+    // Test sequence
+    initial begin
+
+        // Generate VCD waveform
+        $dumpfile("simulation/d_flip_flop_sync_reset.vcd");
+        $dumpvars(0, tb_d_flip_flop_sync_reset);
+
+        //========================================
+        // Test 1: Initial reset
+        //========================================
+        reset = 1'b1;
+        d = 1'b0;
+
+        #7;
+
+        // Reset is still active but Q changes
+        // only at the next rising clock edge
+
+        #3;
+
+        //========================================
+        // Test 2: Release reset
+        //========================================
+        reset = 1'b0;
+        d = 1'b1;
+
+        #10;
+
+        //========================================
+        // Test 3: D = 0
+        //========================================
+        d = 1'b0;
+
+        #10;
+
+        //========================================
+        // Test 4: D = 1
+        //========================================
+        d = 1'b1;
+
+        #10;
+
+        //========================================
+        // Test 5: Synchronous reset
+        // Assert reset between clock edges
+        //========================================
+        d = 1'b1;
+
+        #3;
+
+        reset = 1'b1;
+
+        // Wait until next rising edge
+        #7;
+
+        //========================================
+        // Test 6: Release reset
+        //========================================
+        reset = 1'b0;
+        d = 1'b0;
+
+        #10;
+
+        //========================================
+        // Test 7: D = 1 after reset
+        //========================================
+        d = 1'b1;
+
+        #10;
+
+        $finish;
+    end
+
+    // Display simulation values
+    initial begin
+        $monitor(
+            "Time=%0t | CLK=%b | RESET=%b | D=%b | Q=%b | Q_BAR=%b",
+            $time, clk, reset, d, q, q_bar
+        );
+    end
+
+endmodule

@@ -1,0 +1,15 @@
+Time=0  | CLK=0 | RESET=1 | D=0 | Q=0 | Q_BAR=1
+Time=5  | CLK=1 | RESET=1 | D=0 | Q=0 | Q_BAR=1
+Time=10 | CLK=0 | RESET=0 | D=1 | Q=0 | Q_BAR=1
+Time=15 | CLK=1 | RESET=0 | D=1 | Q=1 | Q_BAR=0
+Time=20 | CLK=0 | RESET=0 | D=0 | Q=1 | Q_BAR=0
+Time=25 | CLK=1 | RESET=0 | D=0 | Q=0 | Q_BAR=1
+Time=30 | CLK=0 | RESET=0 | D=1 | Q=0 | Q_BAR=1
+Time=35 | CLK=1 | RESET=0 | D=1 | Q=1 | Q_BAR=0
+Time=38 | CLK=1 | RESET=1 | D=1 | Q=1 | Q_BAR=0
+Time=40 | CLK=0 | RESET=1 | D=1 | Q=1 | Q_BAR=0
+Time=45 | CLK=1 | RESET=1 | D=1 | Q=0 | Q_BAR=1
+Time=50 | CLK=0 | RESET=0 | D=0 | Q=0 | Q_BAR=1
+Time=55 | CLK=1 | RESET=0 | D=0 | Q=0 | Q_BAR=1
+Time=60 | CLK=0 | RESET=0 | D=1 | Q=0 | Q_BAR=1
+Time=65 | CLK=1 | RESET=0 | D=1 | Q=1 | Q_BAR=0
